@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-bg-deep: #07111c;
+    --color-bg-card: #0b1a2b;
+    --color-gold: #d4af37;
+    --color-gold-light: #f3e5ab;
+    --color-petrol: #0e2a42;
+    --color-cyan: #06b6d4;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Cinzel', Georgia, serif;
+    letter-spacing: 0.03em;
+  }
+}
+
+/* Custom smooth dark scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07111c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #162c42;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Subtle nautical compass backdrop lines */
+.bg-nautical-grid {
+  background-image: radial-gradient(rgba(212, 175, 55, 0.08) 1px, transparent 1px),
+                    radial-gradient(rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px, 80px 80px;
+}

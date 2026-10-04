@@ -1,0 +1,6 @@
+{
+  "name": "SKYBOAT | Restaurante & Bar - Huambo",
+  "description": "Restaurante e Bar premium em Huambo – Cidade Alta / Centro Cultural, Angola. Cozinha internacional, cocktails de assinatura, reservas e pedidos via WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
