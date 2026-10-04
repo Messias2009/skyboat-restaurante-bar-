@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChefHat, Wine, Award, Building2, Compass } from 'lucide-react';
+import { SafeImage } from './SafeImage';
 
 export const About: React.FC = () => {
   return (
@@ -16,11 +17,11 @@ export const About: React.FC = () => {
             <div className="relative mx-auto max-w-lg lg:max-w-none">
               {/* Primary main image: Restaurant Interior */}
               <div className="relative rounded-2xl overflow-hidden border border-[#D4AF37]/30 shadow-2xl shadow-black/80 aspect-4/3 group">
-                <img
-                  src="/src/assets/images/skyboat_restaurant_interior_1791149312862.jpg"
+                <SafeImage
+                  src="/images/skyboat-salao.jpg"
                   alt="Salão nobre e ambiente noturno do SKYBOAT em Huambo"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
+                  fallbackSrc="/images/skyboat-placeholder.jpg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07111C]/80 via-transparent to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
@@ -35,11 +36,11 @@ export const About: React.FC = () => {
 
               {/* Secondary overlapping image: Signature dish */}
               <div className="hidden sm:block absolute -bottom-8 -right-6 w-3/5 rounded-xl overflow-hidden border-2 border-[#D4AF37]/50 shadow-2xl shadow-black/90 aspect-4/3 group bg-[#07111C]">
-                <img
-                  src="/src/assets/images/skyboat_vazia_signature_1791149288060.jpg"
+                <SafeImage
+                  src="/images/pratos/vazia-moda-da-casa.jpg"
                   alt="Vazia à moda da casa no SkyBoat"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  referrerPolicy="no-referrer"
+                  fallbackSrc="/images/skyboat-placeholder.jpg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#07111C]/90 via-transparent to-transparent" />
                 <div className="absolute bottom-3 left-3 right-3">

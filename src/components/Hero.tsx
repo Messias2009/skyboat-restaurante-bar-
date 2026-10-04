@@ -1,6 +1,7 @@
 import React from 'react';
 import { Utensils, Calendar, MapPin, ChevronDown } from 'lucide-react';
 import { useRestaurant } from '../context/RestaurantContext';
+import { SafeImage } from './SafeImage';
 
 export const Hero: React.FC = () => {
   const { config } = useRestaurant();
@@ -12,11 +13,11 @@ export const Hero: React.FC = () => {
     >
       {/* Background Image with Layered Gradient Overlays */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/src/assets/images/skyboat_hero_ambiance_1791149275895.jpg"
+        <SafeImage
+          src="/images/skyboat-hero.jpg"
           alt="Ambiente exclusivo SKYBOAT Restaurante e Bar no Huambo"
           className="w-full h-full object-cover object-center scale-105 transform animate-fade-in duration-1000"
-          referrerPolicy="no-referrer"
+          fallbackSrc="/images/skyboat-placeholder.jpg"
         />
         {/* Deep petroleum & dark nautical gradient scrim for WCAG AA legibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#07111C] via-[#07111C]/80 to-[#07111C]/50" />

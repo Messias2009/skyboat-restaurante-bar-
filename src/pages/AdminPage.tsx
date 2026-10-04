@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { useRestaurant } from '../context/RestaurantContext';
 import { ProductCategory, ProductItem, EventCategory, EventItem } from '../types/restaurant';
+import { SafeImage } from '../components/SafeImage';
 
 export const AdminPage: React.FC = () => {
   const {
@@ -108,7 +109,7 @@ export const AdminPage: React.FC = () => {
       category: 'Pratos principais',
       price: 10000,
       description: '',
-      image: '/src/assets/images/skyboat_vazia_signature_1791149288060.jpg',
+      image: '/images/pratos/vazia-moda-da-casa.jpg',
       isSpecialty: false,
       badge: '',
       prepTime: '20 min',
@@ -171,7 +172,7 @@ export const AdminPage: React.FC = () => {
       date: 'Sexta-feira, 21h00',
       time: '21h00 – 01h00',
       description: '',
-      image: '/src/assets/images/skyboat_live_events_1791149322575.jpg',
+      image: '/images/skyboat-musica-ao-vivo.jpg',
       highlight: '',
       active: true,
     });
@@ -544,11 +545,11 @@ export const AdminPage: React.FC = () => {
                     <div className="flex flex-col sm:flex-row items-center gap-3">
                       <div className="w-16 h-16 rounded-lg bg-black border border-white/10 overflow-hidden shrink-0">
                         {prodForm.image ? (
-                          <img
+                          <SafeImage
                             src={prodForm.image}
                             alt="Pré-visualização"
                             className="w-full h-full object-cover"
-                            referrerPolicy="no-referrer"
+                            fallbackSrc="/images/skyboat-placeholder.jpg"
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-[10px] text-slate-500">
@@ -660,11 +661,11 @@ export const AdminPage: React.FC = () => {
                     return (
                       <tr key={p.id} className="hover:bg-white/5 transition-colors">
                         <td className="p-3.5">
-                          <img
+                          <SafeImage
                             src={p.image}
                             alt={p.name}
                             className="w-10 h-10 rounded-lg object-cover bg-black"
-                            referrerPolicy="no-referrer"
+                            fallbackSrc="/images/skyboat-placeholder.jpg"
                           />
                         </td>
                         <td className="p-3.5 font-semibold text-white">
@@ -1007,11 +1008,11 @@ export const AdminPage: React.FC = () => {
                   className="p-4 rounded-xl bg-[#0B1A2B] border border-white/5 flex items-center justify-between gap-4"
                 >
                   <div className="flex items-center gap-3">
-                    <img
+                    <SafeImage
                       src={ev.image}
                       alt={ev.title}
                       className="w-12 h-12 rounded-lg object-cover bg-black"
-                      referrerPolicy="no-referrer"
+                      fallbackSrc="/images/skyboat-placeholder.jpg"
                     />
                     <div>
                       <span className="text-[10px] text-[#06B6D4] uppercase font-bold">

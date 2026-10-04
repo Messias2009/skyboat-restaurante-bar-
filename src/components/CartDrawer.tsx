@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, Trash2, Plus, Minus, UtensilsCrossed, Send, AlertCircle, Clock } from 'lucide-react';
 import { useRestaurant } from '../context/RestaurantContext';
 import { WhatsAppIcon } from './WhatsAppIcon';
+import { SafeImage } from './SafeImage';
 
 export const CartDrawer: React.FC = () => {
   const {
@@ -132,11 +133,11 @@ export const CartDrawer: React.FC = () => {
                         key={item.product.id}
                         className="p-3 rounded-xl bg-[#0B1A2B] border border-white/5 flex gap-3 items-center justify-between"
                       >
-                        <img
+                        <SafeImage
                           src={item.product.image}
                           alt={item.product.name}
                           className="w-14 h-14 rounded-lg object-cover bg-black/40 shrink-0"
-                          referrerPolicy="no-referrer"
+                          fallbackSrc="/images/skyboat-placeholder.jpg"
                         />
 
                         <div className="flex-1 min-w-0 pr-2">

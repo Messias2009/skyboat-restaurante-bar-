@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { EventCategory, EventItem } from '../types/restaurant';
 import { useRestaurant } from '../context/RestaurantContext';
 import { Calendar, Clock, Music, Award, ArrowRight } from 'lucide-react';
+import { SafeImage } from './SafeImage';
 
 const EVENT_CATEGORIES: (EventCategory | 'Todos')[] = [
   'Todos',
@@ -72,11 +73,11 @@ export const EventsSection: React.FC = () => {
               className="rounded-2xl bg-[#0B1A2B] border border-white/5 hover:border-[#D4AF37]/40 transition-all duration-300 overflow-hidden shadow-xl flex flex-col justify-between group"
             >
               <div className="relative aspect-16/9 overflow-hidden bg-[#07111C]">
-                <img
+                <SafeImage
                   src={event.image}
                   alt={event.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
+                  fallbackSrc="/images/skyboat-placeholder.jpg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0B1A2B] via-transparent to-black/30" />
 

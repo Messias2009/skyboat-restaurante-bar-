@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { GalleryItem } from '../types/restaurant';
 import { useRestaurant } from '../context/RestaurantContext';
 import { X, ZoomIn } from 'lucide-react';
+import { SafeImage } from './SafeImage';
 
 const CATEGORIES = ['Todos', 'Pratos', 'Bebidas', 'Restaurante', 'Eventos', 'Ambiente'] as const;
 
@@ -57,12 +58,11 @@ export const GallerySection: React.FC = () => {
               onClick={() => setActiveLightbox(item)}
               className="group relative rounded-xl overflow-hidden aspect-4/3 cursor-pointer bg-[#07111C] border border-white/5 hover:border-[#D4AF37]/50 shadow-lg hover:shadow-2xl transition-all duration-300"
             >
-              <img
+              <SafeImage
                 src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                referrerPolicy="no-referrer"
-                loading="lazy"
+                fallbackSrc="/images/skyboat-placeholder.jpg"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 

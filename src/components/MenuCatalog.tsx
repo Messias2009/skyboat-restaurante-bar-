@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { ProductCategory, ProductItem } from '../types/restaurant';
 import { useRestaurant } from '../context/RestaurantContext';
 import { Plus, Check, Search, Star, Clock } from 'lucide-react';
+import { SafeImage } from './SafeImage';
 
 const CATEGORIES: ProductCategory[] = [
   'Pratos principais',
@@ -150,12 +151,11 @@ export const MenuCatalog: React.FC = () => {
                 >
                   {/* Card Header & Visual Media */}
                   <div className="relative aspect-4/3 overflow-hidden bg-[#07111C]">
-                    <img
+                    <SafeImage
                       src={product.image}
                       alt={product.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      referrerPolicy="no-referrer"
-                      loading="lazy"
+                      fallbackSrc="/images/skyboat-placeholder.jpg"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B1A2B] via-transparent to-black/20" />
 

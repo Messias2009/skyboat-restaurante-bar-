@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Star, Flame, Clock, Check, Plus, UtensilsCrossed } from 'lucide-react';
 import { useRestaurant } from '../context/RestaurantContext';
+import { SafeImage } from './SafeImage';
 
 export const SpecialtySpotlight: React.FC = () => {
   const { products, addToCart, setIsCartOpen } = useRestaurant();
@@ -36,11 +37,11 @@ export const SpecialtySpotlight: React.FC = () => {
             {/* Left: Premium Plate Image */}
             <div className="lg:col-span-5 relative group">
               <div className="relative rounded-2xl overflow-hidden aspect-4/3 border-2 border-[#D4AF37]/50 shadow-2xl">
-                <img
-                  src={vaziaProduct?.image || '/src/assets/images/skyboat_vazia_signature_1791149288060.jpg'}
+                <SafeImage
+                  src={vaziaProduct?.image || '/images/pratos/vazia-moda-da-casa.jpg'}
                   alt="Vazia à moda da casa SkyBoat"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
+                  fallbackSrc="/images/skyboat-placeholder.jpg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
