@@ -62,7 +62,7 @@ export const AdminPage: React.FC = () => {
     category: 'Pratos principais' as ProductCategory,
     price: 12000,
     description: '',
-    image: '/src/assets/images/skyboat_vazia_signature_1791149288060.jpg',
+    image: '/images/pratos/vazia-moda-da-casa.jpg',
     isSpecialty: false,
     badge: '',
     prepTime: '20 min',
@@ -77,7 +77,7 @@ export const AdminPage: React.FC = () => {
     date: 'Sexta-feira, 21h00',
     time: '21h00 – 01h00',
     description: '',
-    image: '/src/assets/images/skyboat_live_events_1791149322575.jpg',
+    image: '/images/skyboat-musica-ao-vivo.jpg',
     highlight: '',
     active: true,
   });

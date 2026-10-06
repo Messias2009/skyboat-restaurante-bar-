@@ -75,13 +75,27 @@ const RestaurantContext = createContext<RestaurantContextType | undefined>(undef
 
 const STORAGE_KEYS = {
   CONFIG: 'skyboat_config_v1',
-  PRODUCTS: 'skyboat_products_v2',
-  EVENTS: 'skyboat_events_v2',
-  GALLERY: 'skyboat_gallery_v2',
+  PRODUCTS: 'skyboat_products_v3',
+  EVENTS: 'skyboat_events_v3',
+  GALLERY: 'skyboat_gallery_v3',
   RESERVATIONS: 'skyboat_reservations_v1',
   ORDERS: 'skyboat_orders_v1',
   CART: 'skyboat_cart_v1',
   AUTH: 'skyboat_auth_session_token',
+};
+
+// Sanitizes any image URLs to avoid stale local paths or broken references
+const sanitizeImageUrl = (url: string | undefined): string => {
+  if (!url || typeof url !== 'string') return '/images/skyboat-placeholder.jpg';
+  if (url.includes('/src/assets') || url.startsWith('./') || url.includes('file://')) {
+    if (url.includes('vazia')) return '/images/pratos/vazia-moda-da-casa.jpg';
+    if (url.includes('live') || url.includes('jazz')) return '/images/skyboat-musica-ao-vivo.jpg';
+    if (url.includes('sunset')) return '/images/eventos/sunset-sounds.jpg';
+    if (url.includes('jantar') || url.includes('wine')) return '/images/eventos/jantar-harmonizado.jpg';
+    if (url.includes('interior') || url.includes('salao')) return '/images/skyboat-salao.jpg';
+    return '/images/skyboat-placeholder.jpg';
+  }
+  return url;
 };
 
 export const RestaurantProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -99,7 +113,12 @@ export const RestaurantProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [products, setProducts] = useState<ProductItem[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
-      return saved ? JSON.parse(saved) : INITIAL_PRODUCTS;
+      if (!saved) return INITIAL_PRODUCTS;
+      const parsed: ProductItem[] = JSON.parse(saved);
+      return parsed.map((p) => ({
+        ...p,
+        image: sanitizeImageUrl(p.image),
+      }));
     } catch {
       return INITIAL_PRODUCTS;
     }
@@ -109,7 +128,12 @@ export const RestaurantProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [events, setEvents] = useState<EventItem[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.EVENTS);
-      return saved ? JSON.parse(saved) : INITIAL_EVENTS;
+      if (!saved) return INITIAL_EVENTS;
+      const parsed: EventItem[] = JSON.parse(saved);
+      return parsed.map((ev) => ({
+        ...ev,
+        image: sanitizeImageUrl(ev.image),
+      }));
     } catch {
       return INITIAL_EVENTS;
     }
@@ -119,7 +143,12 @@ export const RestaurantProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [gallery, setGallery] = useState<GalleryItem[]>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.GALLERY);
-      return saved ? JSON.parse(saved) : INITIAL_GALLERY;
+      if (!saved) return INITIAL_GALLERY;
+      const parsed: GalleryItem[] = JSON.parse(saved);
+      return parsed.map((g) => ({
+        ...g,
+        image: sanitizeImageUrl(g.image),
+      }));
     } catch {
       return INITIAL_GALLERY;
     }
